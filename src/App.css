@@ -1,0 +1,31 @@
+/*------------------------------------*\
+  $MAIN
+\*------------------------------------*/
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+body {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1240px;
+  font-family: "Roboto", sans-serif;
+  background-color: palegoldenrod;
+}
+
+/* Typography */
+
+h1 {
+  font-size: 28px;
+  font-weight: 300;
+  flex: 1;
+}
+
+h5 {
+  font-weight: 500;
+  line-height: 1.7em;
+}
+
+h6 {
+  color: #666;
+  font-size: 14px;
+}
