@@ -3,7 +3,7 @@ import "./Header.css";
 function Header(props) {
   let category = props.categories;
   return (
-    <nav className="product-filter">
+    <nav className="product-filter" key={"0"}>
       <h1>Catalog</h1>
 
       <div className="sort">

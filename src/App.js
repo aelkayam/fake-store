@@ -1,17 +1,21 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import Products from "./components/products/Products";
 import Loading from "./components/loading/Loading";
+import MyProducts from "./contexts/MyProducts";
+import Cart from "./components/cart/Cart";
 
 let defaultProducts = [];
+let CartProducts = [];
 let loadedProducts = false;
 
 function App() {
   const [productsList, setProductsList] = useState(defaultProducts);
+  const [cart, setCart] = useState(CartProducts);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/")
+    fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => {
         setProductsList(json);
@@ -36,12 +40,22 @@ function App() {
       );
   };
 
+  // add product to shopping cart
+  const addToCart = (prop) => {
+    setCart([...cart, prop]);
+  };
+
   return (
-    <div className="App">
-      <Header categories={categories} filter={filter} />
-      <Loading showLoading={loadedProducts} />
-      <Products products={productsList} />
-    </div>
+    <MyProducts.Provider value={addToCart}>
+      <div className="App">
+        <>
+          <Cart cart={cart} />
+          <Header categories={categories} filter={filter} />
+          <Loading showLoading={loadedProducts} />
+          <Products products={productsList} />
+        </>
+      </div>
+    </MyProducts.Provider>
   );
 }
 
