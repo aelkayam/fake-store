@@ -15,7 +15,7 @@ function App() {
   const [cart, setCart] = useState(CartProducts);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((json) => {
         setProductsList(json);
@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <MyProducts.Provider value={addToCart}>
+    <MyProducts.Provider value={{ addToCart }}>
       <div className="App">
         <>
           <Cart cart={cart} />

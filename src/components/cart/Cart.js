@@ -1,8 +1,5 @@
-import Product from "../product/Product";
-
 function Cart(props) {
-  const products = props.cart.map((item) => <Product title={item.title} />);
-
-  return <section className="products"> {products} </section>;
+  const products = props.cart.map((item) => <div> {item.title} </div>);
+  return <section> {products} </section>;
 }
 export default Cart;
